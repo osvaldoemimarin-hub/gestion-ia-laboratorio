@@ -4,6 +4,8 @@
 
 Universidad Autónoma de Occidente (UAO) · Gestión de Proyectos de IA
 
+**Equipo:** Osvaldo Emilio Marin · Nilson Jacobo Gonzales · Edgar Adrian Ortiz
+
 Dataset: [Dry Bean Dataset — UCI Machine Learning Repository (id 602)](https://archive.ics.uci.edu/dataset/602/dry+bean+dataset) · 13.611 granos · 16 variables geométricas · 7 variedades.
 
 ---
@@ -100,10 +102,12 @@ Estructura estándar de carpetas, código modular y reutilizable en `src/`, semi
 
 | Rol | Responsable |
 |---|---|
-| Product Owner | _Integrante 1_ |
-| Scrum Master | _Integrante 2_ |
-| Data Engineer / Analyst | _Integrante 3_ |
-| ML Engineer | _Integrante 4_ |
+| Product Owner | Nilson Jacobo Gonzales |
+| Scrum Master | Osvaldo Emilio Marin |
+| Data Engineer / Analyst | Edgar Adrian Ortiz |
+| ML Engineer | Osvaldo Emilio Marin |
+
+Equipo de 3 integrantes: el Scrum Master asume también el rol de ML Engineer.
 
 - Sprint 1 — Comprensión y preparación · Sprint 2 — Modelado y evaluación · Sprint 3 — Despliegue y documentación
 - [Product backlog](docs/scrum/product_backlog.md) · [Tablero](docs/scrum/tablero.md) · [Sprints y daily](docs/scrum/sprints.md) · [Retrospectiva](docs/scrum/retrospectiva.md) · [Definition of Done](docs/scrum/definition_of_done.md)

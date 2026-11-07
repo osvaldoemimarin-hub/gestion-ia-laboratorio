@@ -4,12 +4,12 @@
 
 | Rol | Integrante | Responsabilidades |
 |---|---|---|
-| Product Owner | _Integrante 1_ | Define objetivos, prioriza el backlog, valida la entrega final |
-| Scrum Master | _Integrante 2_ | Coordina reuniones, mantiene el tablero, README y flujo Git |
-| Data Engineer / Analyst | _Integrante 3_ | Descarga, calidad, limpieza y EDA |
-| ML Engineer | _Integrante 4_ | Entrenamiento, evaluación y despliegue del modelo |
+| Product Owner | Nilson Jacobo Gonzales | Define objetivos, prioriza el backlog, valida la entrega final |
+| Scrum Master | Osvaldo Emilio Marin | Coordina reuniones, mantiene el tablero, README y flujo Git |
+| Data Engineer / Analyst | Edgar Adrian Ortiz | Descarga, calidad, limpieza y EDA |
+| ML Engineer | Osvaldo Emilio Marin | Entrenamiento, evaluación y despliegue del modelo |
 
-> Reemplazar _Integrante N_ por los nombres del equipo.
+> El equipo tiene 3 integrantes; el Scrum Master asume también el rol de ML Engineer. Las historias marcadas "Todo el equipo" se trabajan entre los tres.
 
 ## Historias de usuario
 
@@ -20,7 +20,7 @@
 | PB-02 | Como científico de datos, quiero revisar la calidad de los datos. | Nulos, duplicados, tipos, outliers y clases | Hay resumen de calidad documentado | Alta | Data Analyst | 1 | Hecho |
 | PB-03 | Como equipo, queremos un modelo base. | Entrenar `LogisticRegression` en `Pipeline` | Se reporta accuracy y F1 macro | Alta | ML Engineer | 2 | Hecho |
 | PB-04 | Como equipo, queremos mejorar el desempeño. | Entrenar `RandomForestClassifier` | Se compara contra baseline | Media | ML Engineer | 2 | Hecho |
-| PB-05 | Como equipo, queremos elegir el mejor modelo. | Tabla comparativa, F1 por clase, validación cruzada | Decisión documentada con criterio explícito | Alta | Todo el equipo | 2 | Hecho |
+| PB-05 | Como equipo, queremos elegir el mejor modelo. | Tabla comparativa, F1 por clase, validación cruzada | Decisión documentada con criterio explícito | Alta | Todo el equipo (3) | 2 | Hecho |
 | PB-06 | Como usuario final, quiero entender el resultado. | Matriz de confusión, importancia de variables, reporte | Se documentan hallazgos en lenguaje claro | Alta | Data Analyst + ML Engineer | 2 | Hecho |
 | PB-07 | Como equipo técnico, quiero reproducibilidad. | Guardar modelo con `joblib`, función `predict_bean_class`, CLI | El modelo se puede cargar y usar | Alta | ML Engineer | 3 | Hecho |
 | PB-08 | Como equipo, queremos documentación profesional. | README, reporte final, evidencia Scrum | README explica cómo reproducir todo | Alta | Scrum Master | 3 | Hecho |
