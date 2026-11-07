@@ -1,0 +1,56 @@
+{
+  "fuente": "UCI ML Repository (ucimlrepo, id=602)",
+  "calidad": {
+    "filas": 13611,
+    "columnas": 17,
+    "nulos_totales": 0,
+    "duplicados": 68,
+    "columnas_no_numericas": [
+      "Class"
+    ],
+    "clases": {
+      "DERMASON": 3546,
+      "SIRA": 2636,
+      "SEKER": 2027,
+      "HOROZ": 1928,
+      "CALI": 1630,
+      "BARBUNYA": 1322,
+      "BOMBAY": 522
+    }
+  },
+  "filas_limpias": 13543,
+  "train": 10834,
+  "test": 2709,
+  "metricas": {
+    "logistic_regression": {
+      "accuracy": 0.9195275009228497,
+      "f1_macro": 0.9305508722243493
+    },
+    "random_forest": {
+      "accuracy": 0.9195275009228497,
+      "f1_macro": 0.930983998605991
+    }
+  },
+  "cross_validation": {
+    "logistic_regression": {
+      "f1_macro_mean": 0.9358662696656121,
+      "f1_macro_std": 0.0071245050032821755
+    },
+    "random_forest": {
+      "f1_macro_mean": 0.9343058050724264,
+      "f1_macro_std": 0.003685286593455937
+    }
+  },
+  "grid_search": {
+    "best_params": {
+      "max_depth": null,
+      "min_samples_split": 10,
+      "n_estimators": 300
+    },
+    "best_cv_f1_macro": 0.9351433365421822,
+    "test": {
+      "accuracy": 0.9147286821705426,
+      "f1_macro": 0.9269349751458424
+    }
+  }
+}
