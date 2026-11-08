@@ -102,9 +102,9 @@ Estructura estándar de carpetas, código modular y reutilizable en `src/`, semi
 
 | Rol | Responsable |
 |---|---|
-| Product Owner | Nilson Jacobo Gonzales |
+| Product Owner | Edgar Adrian Ortiz |
 | Scrum Master | Osvaldo Emilio Marin |
-| Data Engineer / Analyst | Edgar Adrian Ortiz |
+| Data Engineer / Analyst | Nilson Jacobo Gonzales |
 | ML Engineer | Osvaldo Emilio Marin |
 
 Equipo de 3 integrantes: el Scrum Master asume también el rol de ML Engineer.
