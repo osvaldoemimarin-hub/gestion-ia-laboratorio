@@ -4,10 +4,10 @@
 
 | Rol | Integrante | Responsabilidades |
 |---|---|---|
-| Product Owner | Nilson Jacobo Gonzales | Define objetivos, prioriza el backlog, valida la entrega final |
+| Product Owner | Edgar Adrian Ortiz | Define objetivos, prioriza el backlog, valida la entrega final |
 | Scrum Master | Osvaldo Emilio Marin | Coordina reuniones, mantiene el tablero, README y flujo Git |
-| Data Engineer / Analyst | Edgar Adrian Ortiz | Descarga, calidad, limpieza y EDA |
-| ML Engineer | Osvaldo Emilio Marin | Entrenamiento, evaluación y despliegue del modelo |
+| Data Engineer / Analyst | Nilson Jacobo Gonzales | Descarga, calidad, limpieza y EDA |
+| ML Engineer | Edgar Adrian Ortiz | Entrenamiento, evaluación y despliegue del modelo |
 
 > El equipo tiene 3 integrantes; el Scrum Master asume también el rol de ML Engineer. Las historias marcadas "Todo el equipo" se trabajan entre los tres.
 
