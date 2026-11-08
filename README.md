@@ -100,12 +100,12 @@ Estructura estándar de carpetas, código modular y reutilizable en `src/`, semi
 
 ### Scrum ML
 
-| Rol | Responsable |
-|---|---|
-| Product Owner | Edgar Adrian Ortiz |
-| Scrum Master | Osvaldo Emilio Marin |
-| Data Engineer / Analyst | Nilson Jacobo Gonzales |
-| ML Engineer | Osvaldo Emilio Marin |
+| Rol | Integrante | Responsabilidades |
+|---|---|---|
+| Product Owner | Edgar Adrian Ortiz | Define objetivos, prioriza el backlog, valida la entrega final |
+| Scrum Master | Osvaldo Emilio Marin | Coordina reuniones, mantiene el tablero, README y flujo Git |
+| Data Engineer / Analyst | Nilson Jacobo Gonzales | Descarga, calidad, limpieza y EDA |
+| ML Engineer | Edgar Adrian Ortiz | Entrenamiento, evaluación y despliegue del modelo |
 
 Equipo de 3 integrantes: el Scrum Master asume también el rol de ML Engineer.
 
