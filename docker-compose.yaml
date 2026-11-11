@@ -1,0 +1,47 @@
+name: drybean
+services:
+  api:
+    image: drybean-api:${IMAGE_TAG:-local}
+    build:
+      context: .
+      dockerfile: deploy/web/Dockerfile
+      target: api
+    environment:
+      MODEL_PATH: /app/outputs/models/serving/logistic_regression_drybean.joblib
+      MODEL_MANIFEST_PATH: /app/outputs/models/serving/model_manifest.json
+      MAX_BATCH_SIZE: ${MAX_BATCH_SIZE:-1000}
+      MAX_REQUEST_BYTES: ${MAX_REQUEST_BYTES:-2097152}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    networks: [app]
+  dashboard:
+    image: drybean-dashboard:${IMAGE_TAG:-local}
+    build:
+      context: .
+      dockerfile: deploy/web/Dockerfile
+      target: dashboard
+    environment:
+      API_BASE_URL: http://api:8000
+      MAX_BATCH_SIZE: ${MAX_BATCH_SIZE:-1000}
+      MAX_REQUEST_BYTES: ${MAX_REQUEST_BYTES:-2097152}
+    ports:
+      - "127.0.0.1:${DASHBOARD_PORT:-8501}:8501"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    networks: [app, web]
+networks:
+  app:
+    internal: true
+  web:

@@ -4,7 +4,7 @@
 
 Universidad Autónoma de Occidente (UAO) · Gestión de Proyectos de IA
 
-**Equipo:** Osvaldo Emilio Marin · Nilson Jacobo Gonzales · Edgar Adrián Ortiz
+**Equipo:** Osvaldo Emilio Marin · Nilson Jacobo Gonzales · Edgar Adrián Ortiz · Juan Andrés Ruiz Muñoz
 
 Dataset: [Dry Bean Dataset — UCI Machine Learning Repository (id 602)](https://archive.ics.uci.edu/dataset/602/dry+bean+dataset) · 13.611 granos · 16 variables geométricas · 7 variedades.
 
@@ -18,13 +18,13 @@ Una empresa agrícola quiere automatizar la clasificación de granos de frijol p
 
 | Modelo | Accuracy (test) | F1 macro (test) | F1 macro (CV 5 folds) |
 |---|---|---|---|
-| Logistic Regression (baseline) | 0,9195 | 0,9306 | **0,936 ± 0,007** |
-| Random Forest (200 árboles, balanced) | 0,9195 | **0,9310** | 0,934 ± 0,004 |
-| Random Forest + GridSearchCV | — | 0,9269 | 0,935 (CV 3) |
+| Logistic Regression (baseline) | **0,9195** | **0,9306** | **0,936 ± 0,007** |
+| Random Forest (200 árboles, balanced) | 0,9192 | 0,9303 | 0,935 ± 0,004 |
+| Random Forest + GridSearchCV | 0,9181 | 0,9299 | 0,936 (CV 3) |
 
-**Decisión:** los dos modelos están técnicamente empatados. Según el criterio del laboratorio (*preferir el modelo más simple si el desempeño es parecido*), se **recomienda la regresión logística** para despliegue. Ambos modelos quedan guardados.
+**Decisión:** los dos modelos presentan resultados próximos en este experimento; no se realizó una prueba de equivalencia estadística. Según el criterio del laboratorio (*preferir el modelo más simple si el desempeño es parecido*), se **recomienda la regresión logística** para la demo. Ambos modelos quedan guardados.
 
-**Hallazgo principal:** los errores se concentran en variedades geométricamente casi idénticas — **SIRA ↔ DERMASON** (44 % de los errores) y **BARBUNYA ↔ CALI**. BOMBAY se clasifica al 100 %. El techo de ≈93 % viene de los datos, no del modelo: mejorar requiere variables nuevas (color, textura).
+**Hallazgo principal:** en el test histórico del Random Forest, **SIRA ↔ DERMASON** concentra el 44 % de los errores; también se confunden **BARBUNYA ↔ CALI**. BOMBAY alcanza F1 = 1 en ese test. El solapamiento geométrico sugiere explorar color y textura; estos experimentos no demuestran un techo de rendimiento ni descartan otros modelos.
 
 <p align="center">
   <img src="outputs/reports/figures/matrices_confusion.png" width="90%" alt="Matrices de confusión">
@@ -32,10 +32,20 @@ Una empresa agrícola quiere automatizar la clasificación de granos de frijol p
 
 Reporte completo: [`docs/reporte_final.md`](docs/reporte_final.md)
 
-## Estructura del proyecto (TDSP)
+## Estructura del proyecto (TDSP adaptado al laboratorio)
+
+Se conserva la estructura solicitada en `Lab1.pdf` (p. 3) y `Plan_Equipos_ScrumML_DryBean.pdf` (p. 1). Las carpetas de API, dashboard, pruebas y despliegue amplían esa base. No es una copia literal de la plantilla histórica de Microsoft.
 
 ```
 gestion-ia-laboratorio/
+├── deploy/
+│   ├── web/                  # Extensión opcional: FastAPI, Streamlit, Docker y Compose
+│   │   ├── main.py           # Entrada de Streamlit
+│   │   ├── api/              # Contrato HTTP y carga del modelo
+│   │   ├── dashboard/        # Vistas, barra lateral y cliente HTTP
+│   │   ├── .streamlit/       # Tema y configuración
+│   │   ├── Dockerfile        # Construcción de las dos imágenes
+│   └── azure/                # Publicación opcional en nube
 ├── data/
 │   ├── raw/                  # Datos originales sin modificar (Dry_Bean_Dataset.xlsx + descripción)
 │   └── processed/            # Datos limpios (se generan al ejecutar)
@@ -55,6 +65,9 @@ gestion-ia-laboratorio/
 ├── docs/
 │   ├── reporte_final.md      # Entregable 2: reporte CRISP-DM
 │   └── scrum/                # Entregable 3: backlog, tablero, sprints, retrospectiva, DoD
+├── main.py                   # Uso local: pipeline, predict, train, local, docker, test
+├── docker-compose.yaml       # Arranque local de API y dashboard
+├── docker-compose.dev.yaml   # Expone la API en localhost para desarrollo
 ├── requirements.txt
 └── README.md
 ```
@@ -73,13 +86,52 @@ pip install -r requirements.txt
 
 | Acción | Comando |
 |---|---|
-| Pipeline completo (datos → modelos → reportes) | `python -m src.laboratorio_drybean` |
-| Pipeline + validación cruzada y GridSearchCV | `python -m src.laboratorio_drybean --extras` |
+| Pipeline completo (datos → modelos → reportes) | `python main.py pipeline` |
+| Pipeline + validación cruzada y GridSearchCV | `python main.py pipeline --extras` |
 | Abrir el notebook | `jupyter notebook notebooks/01_laboratorio_drybean.ipynb` |
-| Predecir con el modelo guardado | `python -m src.predict --input data/processed/dry_bean_clean.csv --n 5` |
-| Ejecutar las pruebas | `pytest -q` |
+| Predecir con el modelo guardado | `python main.py predict` (tras `pipeline`; `--input` y `--n` opcionales) |
+| Ejecutar las pruebas | `python main.py test` |
 
-Sin conexión a internet, la carga usa automáticamente la copia local `data/raw/Dry_Bean_Dataset.xlsx`. Todo usa `random_state=42`, por lo que los resultados son idénticos en cada ejecución.
+Sin conexión a internet, la carga usa automáticamente la copia local `data/raw/Dry_Bean_Dataset.xlsx`. Utiliza **Python 3.12**; `requirements.txt` reúne las dependencias directas fijadas del laboratorio, API, dashboard y pruebas. La semilla `random_state=42` permite repetir la partición con los mismos datos y entorno. El artefacto web se preparó con Python 3.12.5 y comprueba versiones de inferencia en su manifiesto. Los modelos históricos pueden emitir advertencias si se cargan con otra versión de scikit-learn.
+
+## Dashboard y despliegue con Docker
+
+La extensión en `deploy/web/` es opcional para reproducir el laboratorio. **FastAPI** sirve las predicciones y **Streamlit** permite ingresar medidas, cargar CSV y consultar la evaluación del modelo activo. El Dockerfile construye una imagen por servicio; Compose las inicia y conecta. `deploy/web/main.py` es la entrada de Streamlit, no construye imágenes. Las dos imágenes de esta estructura ya se construyeron localmente y sus servicios pasaron las sondas de salud.
+
+`main.py` en la raíz concentra el uso local: `python main.py pipeline`, `python main.py predict`, `python main.py train` (reentrena el modelo del servicio), `python main.py local` (API y dashboard sin Docker), `python main.py docker` / `python main.py docker --down` (Compose con la API expuesta en `localhost:8000`) y `python main.py test`. Azure no usa este archivo; se despliega con `deploy/azure/Deploy.ps1`.
+
+Equivalente manual con Docker Desktop en modo Linux, desde la raíz:
+
+```powershell
+docker compose up --build -d --wait
+```
+
+Abrir **http://localhost:8501**. Para publicar también la API en localhost y usar PowerShell o Swagger:
+
+```powershell
+docker compose -f docker-compose.yaml -f docker-compose.dev.yaml up --build -d --wait
+```
+
+El CSV de la interfaz debe ser UTF-8, con las 16 columnas de medidas; `Class` es opcional. Se aceptan hasta 1.000 filas y 2 MiB. Los resultados se pueden descargar y, si el archivo tiene etiquetas reales, la interfaz muestra los aciertos de ese lote por separado. Para detener los contenedores: `docker compose down`.
+
+**Demo opcional en Azure:** [abrir el dashboard](https://drybean-dashboard.gentlecoast-d3143f9a.northcentralus.azurecontainerapps.io), con acceso público desde cualquier IP. La [guía de Azure](deploy/azure/README.md) registra los recursos, imágenes verificadas, actualización y reversión. Desde el 11 de noviembre de 2026 Azure ejecuta la estructura actual (`deploy/web/`). Las mismas imágenes están en Docker Hub como `juanruizing/drybean-api` y `juanruizing/drybean-dashboard` (`latest` y `20261111-0248`).
+
+Para iniciar la API en PowerShell con Python 3.12:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+.venv\Scripts\python.exe -m uvicorn deploy.web.api.main:app --host 127.0.0.1 --port 8000
+```
+
+En otra terminal, el dashboard puede iniciarse sin Docker con `.venv\Scripts\python.exe -m streamlit run deploy/web/main.py`. Documentación interactiva de la API: `http://127.0.0.1:8000/docs`. Los endpoints principales son `GET /health/ready`, `GET /api/v1/model` y `POST /api/v1/predict`, que recibe `{"instances": [{...16 medidas...}]}`. Para probarlo en PowerShell:
+
+```powershell
+$beanRequest = Get-Content outputs/models/serving/example_request.json -Raw
+Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/api/v1/predict -ContentType application/json -Body $beanRequest
+```
+
+El artefacto web está en `outputs/models/serving/`, separado de los modelos históricos; su evaluación es accuracy **0,9192** y F1 macro **0,9302**. Se puede regenerar con `.venv\Scripts\python.exe -m deploy.web.prepare_serving_model`. Pruebas disponibles: `.venv\Scripts\python.exe -m pytest -q`.
 
 ## Metodologías
 
@@ -92,11 +144,11 @@ Sin conexión a internet, la carga usa automáticamente la copia local `data/raw
 | 3. Preparación | Pasos 5, 7, 8: eliminación de 68 duplicados, partición 80/20 estratificada, escalado en `Pipeline` |
 | 4. Modelado | Pasos 9 y 11: Logistic Regression y Random Forest |
 | 5. Evaluación | Pasos 10, 12–15 + validación cruzada y GridSearch |
-| 6. Despliegue | Pasos 16–18: `joblib`, `predict_bean_class`, CLI |
+| 6. Despliegue | Pasos 16–18: `joblib`, `predict_bean_class`, CLI; extensión opcional FastAPI, Streamlit y Docker en `deploy/web/`, Azure en `deploy/azure/` |
 
 ### TDSP
 
-Estructura estándar de carpetas, código modular y reutilizable en `src/`, semilla documentada, datos crudos inmutables, artefactos (modelos, métricas, figuras) versionados, pruebas automáticas.
+Adaptación académica de TDSP: estructura prescrita por el laboratorio, código reutilizable en `src/`, datos crudos separados, semilla documentada, modelos y reportes históricos en Git y pruebas automáticas. La extensión web añade un manifiesto con huellas de artefactos y dependencias de inferencia fijadas. La reorganización actual sigue sin commit; su presencia local no acredita publicación en GitHub.
 
 ### Scrum ML
 
@@ -105,9 +157,9 @@ Estructura estándar de carpetas, código modular y reutilizable en `src/`, semi
 | Product Owner | Edgar Adrian Ortiz | Define objetivos, prioriza el backlog, valida la entrega final |
 | Scrum Master | Osvaldo Emilio Marin | Coordina reuniones, mantiene el tablero, README y flujo Git |
 | Data Engineer / Analyst | Nilson Jacobo Gonzales | Descarga, calidad, limpieza y EDA |
-| ML Engineer | Edgar Adrian Ortiz | Entrenamiento, evaluación y despliegue del modelo |
+| ML Engineer | Juan Andrés Ruiz Muñoz | Entrenamiento, evaluación y despliegue del modelo |
 
-Equipo de 3 integrantes: el Scrum Master asume también el rol de ML Engineer.
+Equipo de **4 integrantes**, según la distribución de entregables compartida. Data Engineer y ML Engineer son especialidades del equipo de desarrollo; Scrum distingue las responsabilidades de Product Owner, Scrum Master y Developers. «Scrum ML» es la adaptación usada en el laboratorio.
 
 - Sprint 1 — Comprensión y preparación · Sprint 2 — Modelado y evaluación · Sprint 3 — Despliegue y documentación
 - [Product backlog](docs/scrum/product_backlog.md) · [Tablero](docs/scrum/tablero.md) · [Sprints y daily](docs/scrum/sprints.md) · [Retrospectiva](docs/scrum/retrospectiva.md) · [Definition of Done](docs/scrum/definition_of_done.md)

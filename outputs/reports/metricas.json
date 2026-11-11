@@ -27,8 +27,8 @@
       "f1_macro": 0.9305508722243493
     },
     "random_forest": {
-      "accuracy": 0.9195275009228497,
-      "f1_macro": 0.930983998605991
+      "accuracy": 0.9191583610188261,
+      "f1_macro": 0.9303396642494651
     }
   },
   "cross_validation": {
@@ -37,20 +37,20 @@
       "f1_macro_std": 0.0071245050032821755
     },
     "random_forest": {
-      "f1_macro_mean": 0.9343058050724264,
-      "f1_macro_std": 0.003685286593455937
+      "f1_macro_mean": 0.9347370820577197,
+      "f1_macro_std": 0.004289966102688429
     }
   },
   "grid_search": {
     "best_params": {
-      "max_depth": null,
-      "min_samples_split": 10,
-      "n_estimators": 300
+      "max_depth": 25,
+      "min_samples_split": 5,
+      "n_estimators": 200
     },
-    "best_cv_f1_macro": 0.9351433365421822,
+    "best_cv_f1_macro": 0.9362977659042014,
     "test": {
-      "accuracy": 0.9147286821705426,
-      "f1_macro": 0.9269349751458424
+      "accuracy": 0.9180509413067552,
+      "f1_macro": 0.9299410181891906
     }
   }
 }
