@@ -9,7 +9,7 @@
 | Data Engineer / Analyst | Nilson Jacobo Gonzales | Descarga, calidad, limpieza y EDA |
 | ML Engineer | Juan Andrés Ruiz | Entrenamiento, evaluación y despliegue del modelo |
 
-> El equipo tiene 3 integrantes; el Scrum Master asume también el rol de ML Engineer. Las historias marcadas "Todo el equipo" se trabajan entre los tres.
+> El equipo tiene 4 integrantes; el Scrum Master asume también el rol de ML Engineer. Las historias marcadas "Todo el equipo" se trabajan entre los tres.
 
 ## Historias de usuario
 
