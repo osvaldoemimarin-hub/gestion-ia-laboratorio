@@ -57,9 +57,9 @@
 
 | Integrante | ¿Qué hice? | ¿Qué haré? | ¿Bloqueos? |
 |---|---|---|---|
-| Nilson Jacobo Gonzales (PO) | Validé el criterio F1 macro con el "cliente" | Revisar la comparación de modelos | Ninguno |
-| Osvaldo Emilio Marin (SM / ML) | Revisé y fusioné el PR de limpieza de datos; entrené el baseline | Entrenar Random Forest y matriz de confusión; actualizar el tablero | Nombres de columnas distintos entre fuentes (resuelto en `src/data.py`) |
-| Edgar Adrian Ortiz (Data) | Reporte de calidad y outliers | Gráficas de medias por clase para explicar confusiones | Conflicto de merge en el notebook (resuelto ejecutando y guardando una sola versión) |
+| Nilson Jacobo Gonzales (DE) | Validé el criterio F1 macro con el "cliente" | Revisar la comparación de modelos | Ninguno |
+| Osvaldo Emilio Marin (ML) | Revisé y fusioné el PR de limpieza de datos; entrené el baseline | Entrenar Random Forest y matriz de confusión; actualizar el tablero | Nombres de columnas distintos entre fuentes (resuelto en `src/data.py`) |
+| Edgar Adrian Ortiz (PO) | Reporte de calidad y outliers | Gráficas de medias por clase para explicar confusiones | Conflicto de merge en el notebook (resuelto ejecutando y guardando una sola versión) |
 
 ## Flujo Git usado
 
