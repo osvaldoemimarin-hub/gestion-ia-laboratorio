@@ -105,7 +105,7 @@ Estructura estándar de carpetas, código modular y reutilizable en `src/`, semi
 | Product Owner | Edgar Adrian Ortiz | Define objetivos, prioriza el backlog, valida la entrega final |
 | Scrum Master | Osvaldo Emilio Marin | Coordina reuniones, mantiene el tablero, README y flujo Git |
 | Data Engineer / Analyst | Nilson Jacobo Gonzales | Descarga, calidad, limpieza y EDA |
-| ML Engineer | Edgar Adrian Ortiz | Entrenamiento, evaluación y despliegue del modelo |
+| ML Engineer | Juan Andrés Ruiz | Entrenamiento, evaluación y despliegue del modelo |
 
 Equipo de 3 integrantes: el Scrum Master asume también el rol de ML Engineer.
 
