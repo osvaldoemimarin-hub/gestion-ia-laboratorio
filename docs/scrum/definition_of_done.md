@@ -19,7 +19,7 @@ Los nueve criterios del laboratorio proceden de `Lab1.pdf` (p. 16). Esta tabla c
 
 Los criterios anteriores corresponden al laboratorio local. La extensión web y Azure son opcionales para esa entrega académica; sus criterios adicionales se registran aquí. La [ejecución local](../../README.md) y la [guía de Azure](../../deploy/azure/README.md) contienen las instrucciones vigentes.
 
-La lista siguiente combina calidad técnica y pendientes de entrega/operación para facilitar seguimiento. No todos son criterios universales de Scrum: el equipo debe acordar cuáles integran la DoD de cada incremento. Una review o aceptación administrativa pendiente no es por sí sola una prohibición de publicación en Scrum; tampoco convierte una tarea con criterios de calidad incumplidos en Done. «Hecho técnico» es una etiqueta del repositorio.
+La tabla siguiente registra verificaciones técnicas de los incrementos web. Son una propuesta de calidad para este proyecto; el equipo debe acordar cuáles integran formalmente la DoD. «Hecho técnico» es una etiqueta del repositorio y no acredita una Sprint Review.
 
 | Criterio | Estado | Evidencia requerida |
 |---|---|---|
@@ -29,8 +29,15 @@ La lista siguiente combina calidad técnica y pendientes de entrega/operación p
 | Dashboard individual y por CSV | Comprobado localmente | AppTest recorrió formulario y CSV contra la API; las pruebas persistentes `test_dashboard_*` se retiraron. La aceptación visual del equipo sigue pendiente |
 | Contenedores reproducibles | Verificado localmente en la nueva estructura | Se construyeron ambas imágenes; `pip check`, Compose y sondas saludables. Dashboard HTTP 200 y API interna con la versión esperada del modelo |
 | Azure accesible con topología prevista | Verificado | [Guía y digests](../../deploy/azure/README.md): HTTPS 200, WebSocket y predicción SEKER; dashboard público y API interna. Estructura actual publicada el 11/11/2026, revisión `r20261111024909-43fca417` |
-| Operación y reversión documentadas y verificadas | Pendiente | Logs, métricas de servicio, reinicio y reversión en el destino elegido |
+
+## Trabajo pendiente de operación y evidencia
+
+Estos elementos se siguen en el [backlog](product_backlog.md) como PB-18–PB-20. La aceptación administrativa y los eventos Scrum se registran por separado de la calidad técnica del incremento. Según la [Guía Scrum 2020](https://scrumguides.org/scrum-guide.html), una Sprint Review no es una autorización obligatoria para publicar valor.
+
+| Trabajo | Estado | Evidencia esperada |
+|---|---|---|
+| Operación y reversión | Pendiente | Logs, métricas de servicio, reinicio y reversión probada en el destino elegido |
 | Guía alternativa de VM | Pendiente | Configuración por digest, proxy y procedimiento; identificar si se ejecutó |
-| Evidencia Scrum del incremento | Pendiente | Tablero actualizado, review y retrospectiva basadas en resultados reales |
+| Evidencia Scrum del incremento | Pendiente | Review y retrospectiva con fecha, participantes y resultados reales |
 
 Tras retirar las pruebas del dashboard y de autenticación del registro quedaron **43 pruebas automatizadas** (5 del pipeline original y 38 de la API). La cobertura retirada debe recuperarse o sustituirse por evidencia de validación al actualizar la aplicación; la comprobación de un único caso no equivale a cobertura de errores y límites.

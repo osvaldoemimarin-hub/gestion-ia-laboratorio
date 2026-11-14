@@ -2,7 +2,7 @@
 
 La tabla conserva la síntesis que ya existía en el repositorio. El equipo debe confirmar estas observaciones y registrar la reunión real; no se dispone de acta con fecha y participantes. Según la distribución de entregables compartida, esta evidencia corresponde a Osvaldo Emilio Marin y aún no se ha entregado académicamente.
 
-| Pregunta | Respuesta del equipo |
+| Pregunta | Síntesis previa por confirmar con el equipo |
 |---|---|
 | **¿Qué salió bien / qué funcionó?** | La estructura TDSP y el código en `src/` permitieron que notebook y script den exactamente los mismos números. Fijar la semilla y estratificar desde el Sprint 1 evitó discusiones sobre resultados distintos entre integrantes. El baseline evitó que eligiéramos un modelo más complejo sin justificación. |
 | **¿Qué fue difícil / qué no funcionó?** | Esperábamos que Random Forest mejorara claramente y no fue así; tampoco el GridSearch. Los notebooks generan conflictos de merge en Git. Las dos fuentes de datos (UCI y `.xlsx`) tenían nombres de columna distintos y lo descubrimos tarde, cuando una prueba falló. |

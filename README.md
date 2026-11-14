@@ -148,7 +148,7 @@ El artefacto web está en `outputs/models/serving/`, separado de los modelos his
 
 ### TDSP
 
-Adaptación académica de TDSP: estructura prescrita por el laboratorio, código reutilizable en `src/`, datos crudos separados, semilla documentada, modelos y reportes históricos en Git y pruebas automáticas. La extensión web añade un manifiesto con huellas de artefactos y dependencias de inferencia fijadas. La reorganización actual sigue sin commit; su presencia local no acredita publicación en GitHub.
+Adaptación académica de TDSP: estructura prescrita por el laboratorio, código reutilizable en `src/`, datos crudos separados, semilla documentada, modelos y reportes históricos en Git y pruebas automáticas. La extensión web añade un manifiesto con huellas de artefactos y dependencias de inferencia fijadas.
 
 ### Scrum ML
 
@@ -161,8 +161,8 @@ Adaptación académica de TDSP: estructura prescrita por el laboratorio, código
 
 Equipo de **4 integrantes**, según la distribución de entregables compartida. Data Engineer y ML Engineer son especialidades del equipo de desarrollo; Scrum distingue las responsabilidades de Product Owner, Scrum Master y Developers. «Scrum ML» es la adaptación usada en el laboratorio.
 
-- Sprint 1 — Comprensión y preparación · Sprint 2 — Modelado y evaluación · Sprint 3 — Despliegue y documentación
-- [Product backlog](docs/scrum/product_backlog.md) · [Tablero](docs/scrum/tablero.md) · [Sprints y daily](docs/scrum/sprints.md) · [Retrospectiva](docs/scrum/retrospectiva.md) · [Definition of Done](docs/scrum/definition_of_done.md)
+- Sprints 1–3 — laboratorio académico · Sprints 4–6 — extensión opcional de API, dashboard y Azure
+- [Guía de la evidencia Scrum ML](docs/scrum/README.md): backlog, tablero, sprints, retrospectiva y Definition of Done.
 
 ### Flujo de trabajo en GitHub
 

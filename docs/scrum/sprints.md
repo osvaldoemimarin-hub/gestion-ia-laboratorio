@@ -1,6 +1,6 @@
 # Sprints
 
-Los sprints 1–3 corresponden a la planificación académica del PDF de equipos (pp. 2–3). Los resúmenes de review preexistentes se conservan como declaraciones del repositorio, sin actas que permitan verificar fecha, participantes o aceptación. Las iteraciones 4–6 describen la extensión web. Faltan fechas, duración acordada y registros de eventos reales para acreditar la ejecución completa de Scrum; no se deducen a partir de que el código funcione.
+Los sprints 1–3 corresponden a la planificación académica del PDF de equipos (pp. 2–3). Los resultados técnicos se documentan con los artefactos del repositorio; no hay actas que permitan verificar fecha, participantes o aceptación de las reviews. Las iteraciones 4–6 describen la extensión web. Faltan fechas, duración acordada y registros de eventos reales para acreditar la ejecución completa de Scrum; no se deducen a partir de que el código funcione.
 
 ## Sprint 1 — Comprensión y preparación
 
@@ -16,7 +16,7 @@ Los sprints 1–3 corresponden a la planificación académica del PDF de equipos
 
 **Entregables:** dataset limpio, notebook inicial, repositorio configurado.
 
-**Sprint review:** se aceptan los entregables. Hallazgo: el `.xlsx` local y la API de UCI usan nombres de columna distintos (`AspectRation`/`AspectRatio`, `roundness`/`Roundness`); se agrega normalización en `src/data.py` para que el modelo funcione con ambas fuentes.
+**Resultado documentado:** el `.xlsx` local y la API de UCI usan nombres de columna distintos (`AspectRation`/`AspectRatio`, `roundness`/`Roundness`); se agregó normalización en `src/data.py` para que el modelo funcione con ambas fuentes. No se conserva un acta de Sprint Review que acredite aceptación del equipo.
 
 ---
 
@@ -33,7 +33,7 @@ Los sprints 1–3 corresponden a la planificación académica del PDF de equipos
 
 **Entregables:** comparación de modelos, métricas y gráficas en `outputs/reports/`.
 
-**Sprint review:** el PO esperaba que el Random Forest mejorara claramente; no ocurrió. Se aplica la regla "preferir el modelo más simple" y se recomienda la regresión logística. Se añade al backlog PB-10 (GridSearch) para confirmar que no es un problema de hiperparámetros.
+**Decisión documentada:** Random Forest no mejoró claramente en este experimento. Se aplicó la regla "preferir el modelo más simple" y se recomendó la regresión logística. Se añadió al backlog PB-10 (GridSearch) para comprobar si una búsqueda de hiperparámetros cambiaba la comparación. La participación o aceptación del PO queda por confirmar.
 
 ---
 
@@ -51,7 +51,7 @@ Los sprints 1–3 corresponden a la planificación académica del PDF de equipos
 
 **Entregables:** modelo final, README profesional, entrega final.
 
-**Sprint review:** se cumple la Definition of Done. Se crean PB-11 y PB-12 como trabajo futuro.
+**Verificación técnica:** los criterios del laboratorio figuran comprobados en la [Definition of Done](definition_of_done.md). Se propusieron PB-11 y PB-12 como trabajo futuro. No hay acta que permita confirmar una Sprint Review o aceptación del PO.
 
 ---
 
