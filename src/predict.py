@@ -28,11 +28,16 @@ def predict_bean_class(model, input_data: pd.DataFrame):
 
 def predict_batch(model, input_data: pd.DataFrame) -> pd.DataFrame:
     """Predicciones con probabilidad de la clase ganadora."""
-    proba = model.predict_proba(input_data)
+    proba = predict_probabilities(model, input_data)
     out = input_data.copy()
     out["predicted_class"] = model.classes_[proba.argmax(axis=1)]
     out["confidence"] = proba.max(axis=1).round(4)
     return out
+
+
+def predict_probabilities(model, input_data: pd.DataFrame):
+    """Conserva precisión y orden de clases para consumidores HTTP y CLI."""
+    return model.predict_proba(input_data)
 
 
 def main() -> None:

@@ -1,0 +1,190 @@
+{
+  "manifest_version": 1,
+  "model_version": "drybean-lr-f03d73a4fe6e",
+  "algorithm": "StandardScaler + LogisticRegression",
+  "model_sha256": "f03d73a4fe6eb9d7d540a245605e2d968aa2a997299b7cc3ccfad83a354b66c7",
+  "features": [
+    "Area",
+    "Perimeter",
+    "MajorAxisLength",
+    "MinorAxisLength",
+    "AspectRatio",
+    "Eccentricity",
+    "ConvexArea",
+    "EquivDiameter",
+    "Extent",
+    "Solidity",
+    "Roundness",
+    "Compactness",
+    "ShapeFactor1",
+    "ShapeFactor2",
+    "ShapeFactor3",
+    "ShapeFactor4"
+  ],
+  "classes": [
+    "BARBUNYA",
+    "BOMBAY",
+    "CALI",
+    "DERMASON",
+    "HOROZ",
+    "SEKER",
+    "SIRA"
+  ],
+  "python_version": "3.12.5",
+  "packages": {
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.7.1",
+    "joblib": "1.5.1"
+  },
+  "training": {
+    "git_commit": "b1c0b12d7300791a2183afb977e53ee5f0c9547f",
+    "source_dirty": true,
+    "source_sha256": {
+      "src/config.py": "a91a4af5f0707726a8e56167643c1f00397843c7e04aa5155bc6ef0c0bba7b9b",
+      "src/data.py": "0cdf4bdac3fe4f7a5fd33431f43ab0c84e0364a7fbaa328411baf29b1213aec7",
+      "src/models.py": "2e63d6370c6c94fa85ab1d1026d4c5b55df12ab6c256f5eef2781019020cf381",
+      "deploy/web/prepare_serving_model.py": "5abb199a2d6524ef5fecaf453838eb85dfa596e765febb6185eff7fcba76d29a"
+    },
+    "source_hash_normalization": "UTF-8, LF",
+    "dataset": "data/raw/Dry_Bean_Dataset.xlsx",
+    "dataset_sha256": "a9efa69741c6c5d95167c962a13da23a456f7e940402a5add12639790e01f714",
+    "random_state": 42,
+    "test_size": 0.2,
+    "train_rows": 10834,
+    "test_rows": 2709,
+    "recipe": "python -m deploy.web.prepare_serving_model"
+  },
+  "metrics": {
+    "accuracy": 0.9191583610188261,
+    "f1_macro": 0.9302365421734592
+  },
+  "evaluation": {
+    "source": "holdout local; deduplicado; partición estratificada 80/20",
+    "rows": 2709,
+    "random_state": 42,
+    "classification_report": {
+      "BARBUNYA": {
+        "precision": 0.9254901960784314,
+        "recall": 0.8905660377358491,
+        "f1-score": 0.9076923076923077,
+        "support": 265.0
+      },
+      "BOMBAY": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 104.0
+      },
+      "CALI": {
+        "precision": 0.9109792284866469,
+        "recall": 0.941717791411043,
+        "f1-score": 0.9260935143288085,
+        "support": 326.0
+      },
+      "DERMASON": {
+        "precision": 0.9265129682997119,
+        "recall": 0.9069111424541608,
+        "f1-score": 0.9166072701354241,
+        "support": 709.0
+      },
+      "HOROZ": {
+        "precision": 0.9642857142857143,
+        "recall": 0.9435483870967742,
+        "f1-score": 0.9538043478260869,
+        "support": 372.0
+      },
+      "SEKER": {
+        "precision": 0.9296116504854369,
+        "recall": 0.9433497536945813,
+        "f1-score": 0.9364303178484108,
+        "support": 406.0
+      },
+      "SIRA": {
+        "precision": 0.858195211786372,
+        "recall": 0.8842504743833017,
+        "f1-score": 0.8710280373831776,
+        "support": 527.0
+      },
+      "accuracy": 0.9191583610188261,
+      "macro avg": {
+        "precision": 0.9307249956317589,
+        "recall": 0.9300490838251013,
+        "f1-score": 0.9302365421734592,
+        "support": 2709.0
+      },
+      "weighted avg": {
+        "precision": 0.9197258462143663,
+        "recall": 0.9191583610188261,
+        "f1-score": 0.9192902192227252,
+        "support": 2709.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        236,
+        0,
+        18,
+        0,
+        0,
+        4,
+        7
+      ],
+      [
+        0,
+        104,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        307,
+        0,
+        5,
+        2,
+        4
+      ],
+      [
+        0,
+        0,
+        0,
+        643,
+        0,
+        13,
+        53
+      ],
+      [
+        1,
+        0,
+        11,
+        5,
+        351,
+        0,
+        4
+      ],
+      [
+        9,
+        0,
+        0,
+        5,
+        0,
+        383,
+        9
+      ],
+      [
+        1,
+        0,
+        1,
+        41,
+        8,
+        10,
+        466
+      ]
+    ]
+  }
+}
